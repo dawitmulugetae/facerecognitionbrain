@@ -23,7 +23,7 @@ const Particle = () => {
             loaded={particlesLoaded}
             options={{
                 
-                fpsLimit: 120,
+                fpsLimit: 60,
                 interactivity: {
                     events: {
                         onClick: {
@@ -67,7 +67,7 @@ const Particle = () => {
                             default: "bounce",
                         },
                         random: false,
-                        speed: 6,
+                        speed: 1,
                         straight: false,
                     },
                     number: {
@@ -75,7 +75,7 @@ const Particle = () => {
                             enable: true,
                             area: 800,
                         },
-                        value: 80,
+                        value: 100,
                     },
                     opacity: {
                         value: 0.5,
