@@ -125,7 +125,7 @@ class App extends Component {
   }
 
   render() {
-    const { imageUrl, box, isSignedin } = this.state;
+    const { imageUrl, box, isSignedin, user } = this.state;
     return (
       <div className="App">
         <ParticlesBg type="circle" bg={true} />
@@ -134,7 +134,7 @@ class App extends Component {
           
           ? <div>
               <Logo />
-              <Rank name={this.state.user.name} entries={this.state.user.entries}/>
+              <Rank name={user.name} entries={user.entries}/>
               <ImageLinkForm onInputChange={this.onInputChange} onButtonSubmit={this.onButtonSubmit}/>
               <FaceRecognition box={box} imageUrl={imageUrl}/>
             </div>
