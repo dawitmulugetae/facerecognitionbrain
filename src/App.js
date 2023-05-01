@@ -8,32 +8,27 @@ import ParticlesBg from 'particles-bg'
 import FaceRecognition from './components/FaceRecognition/FaceRecognition';
 import SignIn from './components/SignIn/SignIn';
 import Register from './components/Register/Register';
+   
 
-const PAT = '3ea394cf64194d3bae0916e881ecc40d';
-const USER_ID = 'clarifai';       
-const APP_ID = 'main';
-const MODEL_ID = 'face-detection';
-const MODEL_VERSION_ID = '6dc7e46bc9124c5c8824be4822abe105';    
-
-
+const initialState = {
+  imageUrl: '',
+  input: '',
+  box: {},
+  route: 'signin',
+  isSignedin: false,
+  user: {
+    id: '',
+    name: '',
+    email: '',
+    password: '',
+    entries: 0,
+    joined: ''
+  }
+}
 class App extends Component {
   constructor() {
     super();
-    this.state = {
-      imageUrl: '',
-      input: '',
-      box: {},
-      route: 'signin',
-      isSignedin: false,
-      user: {
-        id: '',
-        name: '',
-        email: '',
-        password: '',
-        entries: 0,
-        joined: ''
-      }
-    }
+    this.state = initialState;
   }
 
  loadUser = (data) => {
@@ -70,32 +65,13 @@ class App extends Component {
 
   onButtonSubmit = async () => {
     this.setState({imageUrl: this.state.input})
-    let raw = JSON.stringify({
-      "user_app_id": {
-          "user_id": USER_ID,
-          "app_id": APP_ID
-      },
-      "inputs": [
-          {
-              "data": {
-                  "image": {
-                      "url": this.state.input
-                  }
-              }
-          }
-      ]
-    });
-    
-    let requestOptions = {
-      method: 'POST',
-      headers: {
-          'Accept': 'application/json',
-          'Authorization': 'Key ' + PAT
-      },
-      body: raw
-    };
-    
-    await fetch("https://api.clarifai.com/v2/models/" + MODEL_ID + "/versions/" + MODEL_VERSION_ID + "/outputs", requestOptions)
+    fetch('http://localhost:3000/imageurl', {
+      method: 'post',
+      headers: {'Content-Type' : 'application/json'},
+      body: JSON.stringify({
+        input: this.state.input,
+    })
+    })
     .then(response => response.json())
     .then(result => {
       if (result) {
@@ -117,7 +93,7 @@ class App extends Component {
   }
   onRouteChange = (route) => {
     if(route === 'signout') {
-      this.setState({isSignedin: false})
+      this.setState(initialState)
     } else if(route === 'home') {
       this.setState({isSignedin: true})
     }
