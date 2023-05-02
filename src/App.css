@@ -8,6 +8,7 @@
 }
 .particles {
   position: fixed;
+  height: 100%;
   left: 0;
   bottom: 0;
   right: 0;
