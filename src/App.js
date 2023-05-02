@@ -69,7 +69,7 @@ class App extends Component {
     fetch('https://smart-brain-api-8sle.onrender.com/imageurl', {
       method: 'post',
       headers: {
-        'Content-Type' : 'text/plain',
+        'Content-Type' : 'application/json',
         'Acess-Control-Allow-Origin': '*'
       },
       body: JSON.stringify({
