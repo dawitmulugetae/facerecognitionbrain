@@ -68,7 +68,10 @@ class App extends Component {
     this.setState({imageUrl: this.state.input})
     fetch('https://smart-brain-api-8sle.onrender.com/imageurl', {
       method: 'post',
-      headers: {'Content-Type' : 'application/json'},
+      headers: {
+        'Content-Type' : 'application/json',
+        'Acess-Control-Allow-Origin': '*'
+      },
       body: JSON.stringify({
         input: this.state.input,
     })
@@ -80,7 +83,7 @@ class App extends Component {
           method: 'put',
           headers: {
             'Content-Type' : 'application/json',
-            'Acess-Control-Allow-Origin': '*',
+            'Acess-Control-Allow-Origin': '*'
           },
           body: JSON.stringify({
             id: this.state.user.id,
