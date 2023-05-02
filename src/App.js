@@ -8,6 +8,7 @@ import ParticlesBg from 'particles-bg'
 import FaceRecognition from './components/FaceRecognition/FaceRecognition';
 import SignIn from './components/SignIn/SignIn';
 import Register from './components/Register/Register';
+import cors from 'cors';
    
 
 const initialState = {
@@ -77,7 +78,10 @@ class App extends Component {
       if (result) {
         fetch('https://smart-brain-api-8sle.onrender.com/image', {
           method: 'put',
-          headers: {'Content-Type' : 'application/json'},
+          headers: {
+            'Content-Type' : 'application/json',
+            'Acess-Control-Allow-Origin': '*',
+          },
           body: JSON.stringify({
             id: this.state.user.id,
         })
