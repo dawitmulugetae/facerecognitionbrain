@@ -66,7 +66,7 @@ class App extends Component {
 
   onButtonSubmit = async () => {
     this.setState({imageUrl: this.state.input})
-    fetch('https://smart-brain-api-8sle.onrender.com/imageurl', {
+   await fetch('https://smart-brain-api-8sle.onrender.com/imageurl', {
       method: 'post',
       headers: {
         'Content-Type' : 'application/json',
