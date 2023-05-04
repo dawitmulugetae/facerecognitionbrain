@@ -66,7 +66,7 @@ class App extends Component {
 
   onButtonSubmit = async () => {
     this.setState({imageUrl: this.state.input})
-   await fetch('http://172.176.144.62:3000/imageurl', {
+   await fetch('https://drab-cyan-lizard-suit.cyclic.app/imageurl', {
       method: 'post',
       headers: {
         'Content-Type' : 'application/json',
@@ -79,7 +79,7 @@ class App extends Component {
     .then(response => response.json())
     .then(result => {
       if (result) {
-        fetch('http://172.176.144.62:3000/image', {
+        fetch('https://drab-cyan-lizard-suit.cyclic.app/image', {
           method: 'put',
           headers: {
             'Content-Type' : 'application/json',

@@ -23,7 +23,7 @@ class Register extends React.Component {
   }
 
   onRegister = () => {
-    fetch(`http://172.176.144.62:3000/register`, {
+    fetch(`https://drab-cyan-lizard-suit.cyclic.app/register`, {
       method: 'post',
       headers: {
         'Content-Type' : 'application/json'     
